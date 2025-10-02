@@ -84,12 +84,13 @@ wrap_plots(lista_graficos, nrow = 2, ncol = 3)
 #Preparando histogramas de cada recurso por servidor
 lista_histogramas = list()
 labels_recursos <- c("uso de CPU", "uso de RAM", "uso de Disco", "uso de Rede", 
-                     "Latência", "número de Processos")
+                     "Latência", "Número de Processos")
 #Servidor C0D000
 for (j in seq_along(recursos)) {
   recurso_atual <- recursos[[j]]
   histograma <- ggplot(captura_C0D000, aes(x = .data[[recurso_atual]])) +
-                  geom_histogram(bins = 30, fill = "lightblue", color = "white") +
+                  geom_histogram(aes(y = after_stat(density)),bins = 30, fill = "lightblue", color = "white") +
+                  geom_density(color = "black", linewidth = 0.5) +
                   labs(
                     title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D000"),
                     x = labels_recursos[[j]],
@@ -104,7 +105,8 @@ wrap_plots(lista_histogramas, nrow = 2, ncol = 3)
 for (j in seq_along(recursos)) {
   recurso_atual <- recursos[[j]]
   histograma <- ggplot(captura_C0D001, aes(x = .data[[recurso_atual]])) +
-    geom_histogram(bins = 30, fill = "lightblue", color = "white") +
+    geom_histogram(aes(y = after_stat(density)),bins = 30, fill = "lightblue", color = "white") +
+    geom_density(color = "black", linewidth = 0.5) +
     labs(
       title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D001"),
       x = labels_recursos[[j]],
@@ -119,7 +121,8 @@ wrap_plots(lista_histogramas, nrow = 2, ncol = 3)
 for (j in seq_along(recursos)) {
   recurso_atual <- recursos[[j]]
   histograma <- ggplot(captura_C0D002, aes(x = .data[[recurso_atual]])) +
-    geom_histogram(bins = 30, fill = "lightblue", color = "white") +
+    geom_histogram(aes(y = after_stat(density)),bins = 30, fill = "lightblue", color = "white") +
+    geom_density(color = "black", linewidth = 0.5) +
     labs(
       title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D002"),
       x = labels_recursos[[j]],
@@ -134,7 +137,8 @@ wrap_plots(lista_histogramas, nrow = 2, ncol = 3)
 for (j in seq_along(recursos)) {
   recurso_atual <- recursos[[j]]
   histograma <- ggplot(captura_C0D003, aes(x = .data[[recurso_atual]])) +
-    geom_histogram(bins = 30, fill = "lightblue", color = "white") +
+    geom_histogram(aes(y = after_stat(density)),bins = 30, fill = "lightblue", color = "white") +
+    geom_density(color = "black", linewidth = 0.5) +
     labs(
       title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D003"),
       x = labels_recursos[[j]],
@@ -149,7 +153,8 @@ wrap_plots(lista_histogramas, nrow = 2, ncol = 3)
 for (j in seq_along(recursos)) {
   recurso_atual <- recursos[[j]]
   histograma <- ggplot(captura_C0D004, aes(x = .data[[recurso_atual]])) +
-    geom_histogram(bins = 30, fill = "lightblue", color = "white") +
+    geom_histogram(aes(y = after_stat(density)),bins = 30, fill = "lightblue", color = "white") +
+    geom_density(color = "black", linewidth = 0.5) +
     labs(
       title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D004"),
       x = labels_recursos[[j]],
@@ -172,7 +177,7 @@ cor(df$disco, df$latencia) # Resultado: 0.1060741
 cor(df$disco, df$qtd_processos) # Resultado: -0.992984
 cor(df$ram, df$usoRede) # Resultado: -0.1103081
 cor(df$ram, df$latencia) # Resultado: 0.1109371
-cor(df$ram, df$qtd_processos) # Resultado: -0.7293521!
+cor(df$ram, df$qtd_processos) # Resultado: -0.7293521
 cor(df$usoRede, df$latencia) # Resultado: 0.09917948
 cor(df$usoRede, df$qtd_processos) # Resultado: 0.05095347
 cor(df$latencia, df$qtd_processos) # Resultado: -0.1087479
