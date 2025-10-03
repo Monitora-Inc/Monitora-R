@@ -252,3 +252,85 @@ ggplot(df, aes(x = qtd_processos, y = ram))+
     x = "Processos",
     y = "RAM (%)"
   )
+
+#Preparando boxplots de cada recurso por servidor
+#Servidor C0D000
+lista_boxplots <- list()
+for (j in seq_along(recursos)) {
+  recurso_atual <- recursos[[j]]
+  ylabel <- ylabels[j]
+  histograma <- ggplot(captura_C0D000, aes(y = .data[[recurso_atual]], x = 1)) +
+    geom_boxplot(fill = "lightblue", color = "black") +
+    labs(
+      title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D000"),
+      x = "",
+      y = ylabel
+    ) + theme_minimal()
+  
+  lista_boxplots[[j]] <- histograma
+}
+wrap_plots(lista_boxplots, nrow = 2, ncol = 3)
+
+#Servidor C0D001
+for (j in seq_along(recursos)) {
+  recurso_atual <- recursos[[j]]
+  ylabel <- ylabels[j]
+  histograma <- ggplot(captura_C0D001, aes(y = .data[[recurso_atual]], x = 1)) +
+    geom_boxplot(fill = "lightblue", color = "black") +
+    labs(
+      title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D001"),
+      x = "",
+      y = ylabel
+    ) + theme_minimal()
+  
+  lista_boxplots[[j]] <- histograma
+}
+wrap_plots(lista_boxplots, nrow = 2, ncol = 3)
+
+#Servidor C0D002
+for (j in seq_along(recursos)) {
+  recurso_atual <- recursos[[j]]
+  ylabel <- ylabels[j]
+  histograma <- ggplot(captura_C0D002, aes(y = .data[[recurso_atual]], x = 1)) +
+    geom_boxplot(fill = "lightblue", color = "black") +
+    labs(
+      title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D002"),
+      x = "",
+      y = ylabel
+    ) + theme_minimal()
+  
+  lista_boxplots[[j]] <- histograma
+}
+wrap_plots(lista_boxplots, nrow = 2, ncol = 3)
+
+#Servidor C0D003
+for (j in seq_along(recursos)) {
+  recurso_atual <- recursos[[j]]
+  ylabel <- ylabels[j]
+  histograma <- ggplot(captura_C0D003, aes(y = .data[[recurso_atual]], x = 1)) +
+    geom_boxplot(fill = "lightblue", color = "black") +
+    labs(
+      title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D003"),
+      x = "",
+      y = ylabel
+    ) + theme_minimal()
+  
+  lista_boxplots[[j]] <- histograma
+}
+wrap_plots(lista_boxplots, nrow = 2, ncol = 3)
+
+#Servidor C0D004
+for (j in seq_along(recursos)) {
+  recurso_atual <- recursos[[j]]
+  ylabel <- ylabels[j]
+  histograma <- ggplot(captura_C0D004, aes(y = .data[[recurso_atual]], x = 1)) +
+    geom_boxplot(fill = "lightblue", color = "black") +
+    labs(
+      title = paste("Distribuição de",labels_recursos[[j]],"no Servidor C0D004"),
+      x = "",
+      y = ylabel
+    ) + theme_minimal()
+  
+  lista_boxplots[[j]] <- histograma
+}
+wrap_plots(lista_boxplots, nrow = 2, ncol = 3)
