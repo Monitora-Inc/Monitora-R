@@ -167,14 +167,14 @@ wrap_plots(lista_histogramas, nrow = 2, ncol = 3)
 
 #Calculando correlações entre recursos
 cor(df$cpu, df$ram) # Resultado: -0.4136297
-cor(df$cpu, df$disco) #Resultado: -0.6674742
+cor(df$cpu, df$disco) #Resultado: -0.07895412
 cor(df$cpu, df$usoRede) # Resultado: 0.1504561
 cor(df$cpu, df$latencia) # Resultado: -0.08082185
 cor(df$cpu, df$qtd_processos) # Resultado: 0.6834651
-cor(df$disco, df$ram) # Resultado: 0.7312732
-cor(df$disco, df$usoRede) # Resultado: -0.03961579
-cor(df$disco, df$latencia) # Resultado: 0.1060741
-cor(df$disco, df$qtd_processos) # Resultado: -0.992984
+cor(df$disco, df$ram) # Resultado: -0.005859376
+cor(df$disco, df$usoRede) # Resultado: -0.04889564
+cor(df$disco, df$latencia) # Resultado: -0.03234024
+cor(df$disco, df$qtd_processos) # Resultado: -0.1108789
 cor(df$ram, df$usoRede) # Resultado: -0.1103081
 cor(df$ram, df$latencia) # Resultado: 0.1109371
 cor(df$ram, df$qtd_processos) # Resultado: -0.7293521
@@ -183,20 +183,6 @@ cor(df$usoRede, df$qtd_processos) # Resultado: 0.05095347
 cor(df$latencia, df$qtd_processos) # Resultado: -0.1087479
 
 #Fazendo modelos lineares das correlações mais fortes
-#CPU e Disco
-ggplot(df, aes(x = cpu, y = disco))+
-  geom_point(color = "darkblue") +
-  geom_smooth(
-    method = "lm",
-    se = TRUE,
-    color = "red",
-  ) +
-  labs(
-    title = "Relação entre uso de CPU e Disco",
-    x = "CPU (%)",
-    y = "Disco (%)"
-  )
-
 #CPU e Processos
 ggplot(df, aes(x = qtd_processos, y = cpu))+
   geom_point(color = "darkblue") +
@@ -209,34 +195,6 @@ ggplot(df, aes(x = qtd_processos, y = cpu))+
     title = "Relação entre uso de CPU e Quantidade de Processos",
     x = "Processos",
     y = "CPU (%)"
-  )
-
-#Disco e RAM
-ggplot(df, aes(x = ram, y = disco))+
-  geom_point(color = "darkblue") +
-  geom_smooth(
-    method = "lm",
-    se = TRUE,
-    color = "red",
-  ) +
-  labs(
-    title = "Relação entre uso de RAM e Disco",
-    x = "RAM (%)",
-    y = "Disco (%)"
-  )
-
-#Disco e Processos
-ggplot(df, aes(x = qtd_processos, y = disco))+
-  geom_point(color = "darkblue") +
-  geom_smooth(
-    method = "lm",
-    se = TRUE,
-    color = "red",
-  ) +
-  labs(
-    title = "Relação entre uso de Disco e Quantidade de Processos",
-    x = "Processos",
-    y = "Disco (%)"
   )
 
 #RAM e Processos
